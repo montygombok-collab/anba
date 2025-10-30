@@ -6,7 +6,6 @@
     --primary-color: #FFC300; /* الأصفر الحيوي لمطعم عنبه */
     --secondary-color: #000000; /* الأسود الداكن للفخامة */
     --text-light: #FFFFFF; /* النص الأبيض */
-    --text-dark: #333333;
     --white-strip: #FFFFFF; /* اللون الأبيض للأشرطة */
     /* شريط الحدود الأبيض العريض (5 بكسل) */
     --border-line-thick: 5px solid var(--white-strip); 
@@ -17,7 +16,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* يفضل استخدام خط عربي مميز وواضح مثل Cairo أو Tajawal */
     font-family: 'Arial', sans-serif; 
 }
 
@@ -26,6 +24,22 @@ body {
     color: var(--text-light);
     line-height: 1.6;
     text-align: right; /* محاذاة النص لليمين للغة العربية */
+}
+
+/* ---------------------------------------------------- */
+/* المربعات البيضاء الشفافة (White Boxes)  */
+/* ---------------------------------------------------- */
+
+.white-box-content {
+    background-color: rgba(255, 255, 255, 0.9); /* خلفية بيضاء شبه شفافة */
+    color: var(--secondary-color); /* النص يصبح أسود داخل المربع */
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 2;
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 /* ---------------------------------------------------- */
@@ -89,7 +103,6 @@ nav ul li a:hover {
 /* ---------------------------------------------------- */
 
 .hero {
-    /* صورة كبيرة لطبق رئيسي أو مجموعة أطباق */
     background: url('hero-food-plate.jpg') no-repeat center center/cover; 
     height: 70vh;
     display: flex;
@@ -97,7 +110,7 @@ nav ul li a:hover {
     align-items: center;
     text-align: center;
     position: relative;
-    border-bottom: var(--border-line-thick); /* الشريط الأبيض العريض */
+    border-bottom: var(--border-line-thick); 
 }
 
 .hero::before {
@@ -107,25 +120,20 @@ nav ul li a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.65); /* طبقة سوداء شفافة لتوضيح النص */
+    background: rgba(0, 0, 0, 0.4); /* طبقة سوداء أقل كثافة مع وجود المربع الأبيض */
     z-index: 1;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 20px;
-}
-
-.hero h1 {
+/* تنسيق النصوص داخل المربع الأبيض في الـ Hero */
+.white-box-content h1 {
     font-size: 3.5em;
-    color: var(--primary-color);
+    color: var(--secondary-color); /* أسود */
     margin-bottom: 10px;
 }
 
-.hero h2 {
+.white-box-content h2 {
     font-size: 1.5em;
-    color: var(--text-light);
+    color: #555555; /* رمادي لتمييز النص الفرعي */
     margin-bottom: 30px;
 }
 
@@ -144,12 +152,11 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     color: var(--text-light);
-    font-size: 2.2em; /* زيادة حجم الخط داخل الشريط */
+    font-size: 2.2em; 
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     position: relative;
     overflow: hidden;
-    /* تطبيق الشريط الأبيض العريض على الحدود العلوية والسفلية */
     border-top: var(--border-line-thick); 
     border-bottom: var(--border-line-thick); 
 }
@@ -161,7 +168,7 @@ nav ul li a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4); /* طبقة سوداء شفافة فوق الصور */
+    background: rgba(0, 0, 0, 0.4); 
     z-index: 1;
 }
 
@@ -170,19 +177,14 @@ nav ul li a:hover {
     z-index: 2;
     color: var(--primary-color); 
     padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.5); /* خلفية خفيفة للنص */
+    background-color: rgba(0, 0, 0, 0.5); 
     border-radius: 5px;
 }
 
-/* صور خلفية مختلفة لكل شريط (يجب إضافة الصور في نفس مجلد ملف CSS) */
+/* صور خلفية مختلفة للشرايط */
 .food-strip-1 {
     background: url('food-bg-1.jpg') no-repeat center center/cover; 
 }
-
-.food-strip-2 {
-    background: url('food-bg-2.jpg') no-repeat center center/cover; 
-}
-
 .food-strip-3 {
     background: url('food-bg-3.jpg') no-repeat center center/cover; 
 }
@@ -195,7 +197,7 @@ nav ul li a:hover {
 .menu-section {
     padding: 80px 5%;
     text-align: center;
-    border-bottom: var(--border-line-thick); /* الشريط الأبيض العريض */
+    border-bottom: var(--border-line-thick); 
 }
 
 .menu-section h2 {
@@ -218,7 +220,7 @@ nav ul li a:hover {
     border-radius: 10px;
     width: 300px;
     text-align: right;
-    border: 1px solid #333333; /* إطار رمادي خفيف */
+    border: 1px solid #333333; 
     transition: border-color 0.3s, transform 0.3s;
 }
 
@@ -255,32 +257,42 @@ nav ul li a:hover {
 }
 
 .featured {
-    border: 3px solid var(--primary-color); /* تمييز الطبق الخاص */
+    border: 3px solid var(--primary-color); 
     box-shadow: 0 0 15px rgba(255, 195, 0, 0.5);
 }
 
 /* ---------------------------------------------------- */
-/* قسم قصتنا (About)                   */
+/* قسم قصتنا (About) - يستخدم الصورة المرفقة          */
 /* ---------------------------------------------------- */
-.about-section {
-    padding: 80px 5%;
+.about-image-section {
+    /* الصورة المرفقة من المستخدم */
+    background: url('https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2262876914146583') no-repeat center center/cover;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    border-bottom: var(--border-line-thick); /* الشريط الأبيض العريض */
+    position: relative;
+    border-bottom: var(--border-line-thick); 
 }
 
-.about-section h2 {
-    font-size: 2.5em;
-    color: var(--primary-color);
-    margin-bottom: 30px;
+.about-image-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* طبقة سوداء خفيفة لتوضيح المربع الأبيض */
+    z-index: 1;
 }
 
-.about-section p {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.2em;
-    color: #E0E0E0;
+/* المربع الأبيض داخل قسم القصة */
+.about-image-section .white-box-content {
+    max-width: 650px;
+    text-align: right;
+    margin: 40px 0;
 }
-
 
 /* ---------------------------------------------------- */
 /* قسم التواصل (Contact)              */
@@ -290,7 +302,7 @@ nav ul li a:hover {
     padding: 60px 5%;
     text-align: center;
     background-color: #0A0A0A;
-    border-bottom: var(--border-line-thick); /* الشريط الأبيض العريض */
+    border-bottom: var(--border-line-thick); 
 }
 
 .contact-section h2 {
@@ -298,9 +310,11 @@ nav ul li a:hover {
     margin-bottom: 30px;
 }
 
-.contact-info p {
+/* تنسيق النصوص داخل المربع الأبيض في قسم التواصل */
+.contact-box p {
     font-size: 1.1em;
     margin-bottom: 10px;
+    color: var(--secondary-color); /* أسود */
 }
 
 .map-link {
@@ -328,7 +342,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: var(--border-line-thick); /* الشريط الأبيض العريض */
+    border-top: var(--border-line-thick); 
 }
 
 .social-links a {
@@ -351,14 +365,8 @@ footer {
         padding: 15px 5%;
     }
 
-    nav ul {
-        margin-top: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav ul li {
-        margin-bottom: 10px;
+    .white-box-content {
+        padding: 20px;
     }
 
     .hero h1 {
@@ -379,34 +387,19 @@ footer {
     }
 
     .food-strip {
-        height: 30vh; /* تقليل ارتفاع الشريط في الهواتف */
+        height: 30vh; 
     }
 
     .food-strip h3 {
         font-size: 1.5em;
     }
 
+    .about-image-section {
+        min-height: 45vh;
+    }
+
     footer {
         flex-direction: column;
         gap: 10px;
-    }
-
-    .social-links {
-        margin-top: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2em;
-    }
-
-    .hero h2 {
-        font-size: 1em;
-    }
-
-    .big-cta {
-        padding: 10px 25px;
-        font-size: 1em;
     }
 }
