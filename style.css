@@ -1,0 +1,248 @@
+/* ---------------------------------------------------- */
+/* الأساسيات وتطبيق الألوان الرئيسية          */
+/* ---------------------------------------------------- */
+
+:root {
+    --primary-color: #FFC300; /* الأصفر الحيوي - يمكنك تعديل الدرجة */
+    --secondary-color: #000000; /* الأسود الداكن */
+    --text-light: #FFFFFF; /* النص الأبيض للخلفية السوداء */
+    --text-dark: #333333; /* النص الداكن للخلفية الفاتحة (إذا استخدمت) */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif; /* يفضل استخدام خط عربي مميز */
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    line-height: 1.6;
+    text-align: right; /* محاذاة النص لليمين للغة العربية */
+}
+
+/* ---------------------------------------------------- */
+/* رأس الصفحة (Header)               */
+/* ---------------------------------------------------- */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--secondary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0 15px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* ---------------------------------------------------- */
+/* زر الحث على الإجراء (CTA)            */
+/* ---------------------------------------------------- */
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 10px 25px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: bold;
+}
+
+.cta-button:hover {
+    background-color: #FFD700; /* درجة أفتح من الأصفر */
+    transform: scale(1.05);
+}
+
+/* ---------------------------------------------------- */
+/* القسم الرئيسي (Hero)                  */
+/* ---------------------------------------------------- */
+
+.hero {
+    /* يجب استبدال الرابط بصورة فعلية ذات جودة عالية للمطعم أو الأطباق */
+    background: url('restaurant-image-placeholder.jpg') no-repeat center center/cover; 
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* طبقة سوداء شفافة لتوضيح النص */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 1.5em;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.big-cta {
+    padding: 15px 40px;
+    font-size: 1.2em;
+}
+
+/* ---------------------------------------------------- */
+/* قسم القائمة (Menu)                  */
+/* ---------------------------------------------------- */
+
+.menu-section {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.menu-section h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.menu-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.menu-card {
+    background-color: #111111; /* أسود أغمق قليلاً */
+    padding: 25px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: right;
+    border: 1px solid var(--secondary-color);
+    transition: border-color 0.3s;
+}
+
+.menu-card:hover {
+    border-color: var(--primary-color);
+}
+
+.menu-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.menu-card p {
+    color: #CCCCCC;
+    margin-bottom: 15px;
+}
+
+.price {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.featured {
+    border: 3px solid var(--primary-color); /* تمييز الطبق الخاص */
+    box-shadow: 0 0 15px rgba(255, 195, 0, 0.5);
+}
+
+/* ---------------------------------------------------- */
+/* قسم التواصل (Contact)              */
+/* ---------------------------------------------------- */
+
+.contact-section {
+    padding: 60px 5%;
+    text-align: center;
+    background-color: #0A0A0A;
+}
+
+.contact-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.map-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+    transition: color 0.3s;
+}
+
+.map-link:hover {
+    color: #FFD700;
+}
+
+/* ---------------------------------------------------- */
+/* تذييل الصفحة (Footer)             */
+/* ---------------------------------------------------- */
+
+footer {
+    background-color: var(--secondary-color);
+    color: #AAAAAA;
+    text-align: center;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #222222;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-left: 15px;
+}
+
+.social-links a:hover {
+    opacity: 0.8;
+}
