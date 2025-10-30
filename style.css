@@ -3,45 +3,143 @@
 /* ---------------------------------------------------- */
 
 :root {
-    --primary-color: #FFC300; /* الأصفر الحيوي */
-    --secondary-color: #000000; /* الأسود الداكن */
-    --text-light: #FFFFFF;
+    --primary-color: #FFC300; /* الأصفر الحيوي لمطعم عنبه */
+    --secondary-color: #000000; /* الأسود الداكن للفخامة */
+    --text-light: #FFFFFF; /* النص الأبيض */
     --text-dark: #333333;
-    --white-strip: #FFFFFF; /* اللون الأبيض للشريط */
-    /* تغيير سمك الخط الفاصل إلى 5 بكسل بدلاً من 1 بكسل */
+    --white-strip: #FFFFFF; /* اللون الأبيض للأشرطة */
+    /* شريط الحدود الأبيض العريض (5 بكسل) */
     --border-line-thick: 5px solid var(--white-strip); 
+    --card-background: #111111; /* خلفية بطاقات القائمة */
 }
 
-/* ... (بقية الأنماط الأساسية تبقى كما هي) ... */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* يفضل استخدام خط عربي مميز وواضح مثل Cairo أو Tajawal */
+    font-family: 'Arial', sans-serif; 
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    line-height: 1.6;
+    text-align: right; /* محاذاة النص لليمين للغة العربية */
+}
 
 /* ---------------------------------------------------- */
-/* رأس الصفحة (Header)               */
+/* رأس الصفحة (Header) والتنقل        */
 /* ---------------------------------------------------- */
 
 header {
-    /* ... (النمط الأصلي) ... */
-    /* تطبيق الشريط الأبيض العريض على الحدود السفلية للـ Header */
-    border-bottom: var(--border-line-thick); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--secondary-color);
+    border-bottom: var(--border-line-thick); /* الشريط الأبيض العريض */
 }
 
-/* ... (بقية الأنماط تبقى كما هي) ... */
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0 15px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* ---------------------------------------------------- */
+/* زر الحث على الإجراء (CTA)            */
+/* ---------------------------------------------------- */
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 10px 25px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: bold;
+}
+
+.cta-button:hover {
+    background-color: #FFD700; 
+    transform: scale(1.05);
+}
 
 /* ---------------------------------------------------- */
 /* القسم الرئيسي (Hero)                  */
 /* ---------------------------------------------------- */
 
 .hero {
-    /* ... (النمط الأصلي) ... */
-    /* تطبيق الشريط الأبيض العريض على الحدود السفلية للـ Hero */
-    border-bottom: var(--border-line-thick); 
+    /* صورة كبيرة لطبق رئيسي أو مجموعة أطباق */
+    background: url('hero-food-plate.jpg') no-repeat center center/cover; 
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    border-bottom: var(--border-line-thick); /* الشريط الأبيض العريض */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65); /* طبقة سوداء شفافة لتوضيح النص */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 1.5em;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.big-cta {
+    padding: 15px 40px;
+    font-size: 1.2em;
 }
 
 /* ---------------------------------------------------- */
-/* أشرطة الطعام الخلفية (Food Strips) */
+/* أشرطة الطعام الخلفية العريضة (Food Strips) */
 /* ---------------------------------------------------- */
 
 .food-strip {
-    height: 40vh; /* زيادة ارتفاع الشريط ليصبح أعرض (من 30vh إلى 40vh) */
+    height: 40vh; /* زيادة ارتفاع الشريط ليصبح أعرض */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,7 +154,38 @@ header {
     border-bottom: var(--border-line-thick); 
 }
 
-/* ... (بقية أنماط الـ Food Strips تبقى كما هي) ... */
+.food-strip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* طبقة سوداء شفافة فوق الصور */
+    z-index: 1;
+}
+
+.food-strip h3 {
+    position: relative;
+    z-index: 2;
+    color: var(--primary-color); 
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* خلفية خفيفة للنص */
+    border-radius: 5px;
+}
+
+/* صور خلفية مختلفة لكل شريط (يجب إضافة الصور في نفس مجلد ملف CSS) */
+.food-strip-1 {
+    background: url('food-bg-1.jpg') no-repeat center center/cover; 
+}
+
+.food-strip-2 {
+    background: url('food-bg-2.jpg') no-repeat center center/cover; 
+}
+
+.food-strip-3 {
+    background: url('food-bg-3.jpg') no-repeat center center/cover; 
+}
 
 
 /* ---------------------------------------------------- */
@@ -64,30 +193,127 @@ header {
 /* ---------------------------------------------------- */
 
 .menu-section {
-    /* ... (النمط الأصلي) ... */
-    /* تطبيق الشريط الأبيض العريض على الحدود السفلية للـ Menu */
-    border-bottom: var(--border-line-thick); 
+    padding: 80px 5%;
+    text-align: center;
+    border-bottom: var(--border-line-thick); /* الشريط الأبيض العريض */
 }
 
-/* ... (بقية الأنماط تبقى كما هي) ... */
+.menu-section h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.menu-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.menu-card {
+    background-color: var(--card-background); 
+    padding: 25px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: right;
+    border: 1px solid #333333; /* إطار رمادي خفيف */
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.menu-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px); 
+}
+
+.card-image {
+    width: 100%;
+    height: 180px; 
+    object-fit: cover; 
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #333; 
+}
+
+.menu-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.menu-card p {
+    color: #CCCCCC;
+    margin-bottom: 15px;
+}
+
+.price {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.featured {
+    border: 3px solid var(--primary-color); /* تمييز الطبق الخاص */
+    box-shadow: 0 0 15px rgba(255, 195, 0, 0.5);
+}
 
 /* ---------------------------------------------------- */
 /* قسم قصتنا (About)                   */
 /* ---------------------------------------------------- */
 .about-section {
-    /* ... (النمط الأصلي) ... */
-    /* تطبيق الشريط الأبيض العريض على الحدود السفلية للـ About */
-    border-bottom: var(--border-line-thick); 
+    padding: 80px 5%;
+    text-align: center;
+    border-bottom: var(--border-line-thick); /* الشريط الأبيض العريض */
 }
+
+.about-section h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2em;
+    color: #E0E0E0;
+}
+
 
 /* ---------------------------------------------------- */
 /* قسم التواصل (Contact)              */
 /* ---------------------------------------------------- */
 
 .contact-section {
-    /* ... (النمط الأصلي) ... */
-    /* تطبيق الشريط الأبيض العريض على الحدود السفلية للـ Contact */
-    border-bottom: var(--border-line-thick); 
+    padding: 60px 5%;
+    text-align: center;
+    background-color: #0A0A0A;
+    border-bottom: var(--border-line-thick); /* الشريط الأبيض العريض */
+}
+
+.contact-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.map-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+    transition: color 0.3s;
+}
+
+.map-link:hover {
+    color: #FFD700;
 }
 
 /* ---------------------------------------------------- */
@@ -95,7 +321,92 @@ header {
 /* ---------------------------------------------------- */
 
 footer {
-    /* ... (النمط الأصلي) ... */
-    /* تطبيق الشريط الأبيض العريض على الحدود العلوية للـ Footer */
-    border-top: var(--border-line-thick); 
+    background-color: var(--secondary-color);
+    color: #AAAAAA;
+    text-align: center;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: var(--border-line-thick); /* الشريط الأبيض العريض */
+}
+
+.social-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-left: 15px;
+}
+
+.social-links a:hover {
+    opacity: 0.8;
+}
+
+/* ---------------------------------------------------- */
+/* تصميمات متجاوبة (Responsive Design)   */
+/* ---------------------------------------------------- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px 5%;
+    }
+
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero h2 {
+        font-size: 1.2em;
+    }
+
+    .menu-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-card {
+        width: 90%;
+    }
+
+    .food-strip {
+        height: 30vh; /* تقليل ارتفاع الشريط في الهواتف */
+    }
+
+    .food-strip h3 {
+        font-size: 1.5em;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-links {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero h2 {
+        font-size: 1em;
+    }
+
+    .big-cta {
+        padding: 10px 25px;
+        font-size: 1em;
+    }
 }
